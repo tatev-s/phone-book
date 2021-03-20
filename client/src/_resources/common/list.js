@@ -43,7 +43,6 @@ const List = ({columns, endpoint}) => {
         }
     };
     React.useEffect(()=>{
-        console.log({loaded})
         if(loaded) return;
         loadData();
     },[queryParams, loaded]);
@@ -51,7 +50,6 @@ const List = ({columns, endpoint}) => {
         getRequest({endpoint, queryParams})
             .then(({data, error})=>{
                 if (!error) {
-                    console.log(data.count)
                     setTotalSize(data.count)
                     setItems(data.rows);
                 } else {
@@ -96,7 +94,6 @@ const List = ({columns, endpoint}) => {
             setLoaded(false)
         }
     };
-    console.log({options})
     return (<>
             <Button variant="primary" href={`/${endpoint}/create`}>Create Group</Button>
                 <Form.Group controlId="search" >
